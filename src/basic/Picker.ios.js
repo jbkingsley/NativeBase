@@ -94,7 +94,9 @@ class PickerNB extends Component {
   }
 
   renderIcon() {
-    return React.cloneElement(this.props.iosIcon, {
+    return this.props.iosIcon.type.WrappedComponent.name === 'IconNB' 
+    ? 
+    React.cloneElement(this.props.iosIcon, {
       style: [
         {
           fontSize: 22,
@@ -102,7 +104,13 @@ class PickerNB extends Component {
         },
         { ...this.props.iosIcon.props.style }
       ]
-    });
+    })
+    :
+    React.cloneElement(this.props.iosIcon, {
+        style: [
+          { ...this.props.iosIcon.props.style }
+        ]
+      });
   }
 
   renderButton() {
